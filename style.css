@@ -1,3 +1,10 @@
+ * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -44,6 +51,7 @@ header {
     border: none;
     cursor: pointer;
 }
+
 .search-btn:hover {
     background-color: #9f85bb;
     border-radius: 15px;
@@ -53,16 +61,25 @@ header {
     height: 40px;
     width: 40px;
 }
+
 .user-btn {
     background-color: goldenrod;
     padding: 5px 10px;
     border-radius: 10px;
     cursor: pointer;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
 }
 
-.user-btn img{
+.user-btn img {
     height: 30px;
-    height: 30px;
+    width: 30px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
 }
 
 nav ul {
@@ -75,6 +92,9 @@ nav ul {
 nav ul li {
     margin: 0 15px;
     position: relative;
+}
+nav ul.registration {
+    margin-right: 0;
 }
 
 nav ul li a {
@@ -118,9 +138,11 @@ nav ul li .dropdown-menu li a {
     height: 50px;
     background-color: goldenrod;
     cursor: pointer;
-    margin-left: 300px;
-    margin-right: 10px;
-    margin-top: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
 }
 
 .btn-cart:hover {
@@ -130,6 +152,18 @@ nav ul li .dropdown-menu li a {
 .btn-cart img {
     width: 30px;
     height: 30px;
+}
+
+.cart-notification {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: gold;
+    color: black;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 #featured {
@@ -281,18 +315,6 @@ article h2 {
 
 .cart-items li .item-details {
     flex-grow: 1;
-}
-
-.cart-notification {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: gold;
-    color: black;
-    border-radius: 10px;
-    padding: 5px 10px;
-    font-size: 12px;
-    font-weight: bold;
 }
 
 #cart-total {

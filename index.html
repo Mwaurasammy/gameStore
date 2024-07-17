@@ -1,57 +1,65 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GEMAR</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="GeMar logo">
-            <h1>GeMar</h1>
-            <input type="text" id="searchInput" placeholder="Search games...">
-            <button class="search-btn" onclick="searchGames()"><img src="images/search.png" alt="Search"></button>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Games List</a></li>
-                <li><a href="#">FAQ</a></li>
-            </ul>
-            <ul class="registration">
-                <li><button class="user-btn"><img src="images/user.png"></button></li>
-            </ul>
-            <ul class="cart">
-                <li>
-                    <button class="btn-cart" onclick="openCartModal()">
-                        <img src="images/cart1.png" alt="Cart">
-                        <span id="cart-notification" class="cart-notification">0</span>
-                    </button>
-                </li>
-            </ul>
-        </nav>
+      <div class="logo">
+        <img src="images/logo.png" alt="GeMar logo" />
+        <h1>GeMar</h1>
+        <input type="text" id="searchInput" placeholder="Search games..." />
+        <button class="search-btn" onclick="searchGames()">
+          <img src="images/search.png" alt="Search" />
+        </button>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Games List</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+        <ul class="cart">
+          <li>
+            <button class="btn-cart" onclick="openCartModal()">
+              <img src="images/cart1.png" alt="Cart" />
+              <span id="cart-notification" class="cart-notification">0</span>
+            </button>
+          </li>
+        </ul>
+        <ul class="registration">
+          <li>
+            <button class="user-btn"><img src="images/user.png" /></button>
+          </li>
+        </ul>
+      </nav>
     </header>
+
     <main id="featured">
-        <!-- Game articles will be dynamically added here -->
+      <!-- Game articles will be dynamically added here -->
     </main>
 
     <!-- Modal -->
     <div id="cartModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeCartModal()">&times;</span>
-            <h2>Your Shopping Cart</h2>
-            <ul id="cart-items" class="cart-items">
-                <!-- Cart items will be dynamically added here -->
-            </ul>
-            <div class="modal-footer">
-                <p>Total: <span id="cart-total">$0.00</span></p>
-                <button class="btn-primary" onclick="checkout()">Checkout</button>
-                <button class="btn-secondary" onclick="clearCart()">Clear Cart</button>
-            </div>
+      <div class="modal-content">
+        <span class="close" onclick="closeCartModal()">&times;</span>
+        <h2>Your Games</h2>
+        <ul id="cart-items" class="cart-items">
+          <!-- Cart items will be dynamically added here -->
+        </ul>
+        <div class="modal-footer">
+            <div class="price-info">
+          <p>Total: <span id="cart-total">$0.00</span></p>
+          <button class="btn-primary" onclick="checkout()">Checkout</button>
+          <button class="btn-secondary" onclick="clearCart()">
+            Clear Cart
+          </button>
         </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
