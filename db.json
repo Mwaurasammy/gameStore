@@ -3,91 +3,91 @@
     {
       "id": 1,
       "title": "Grand Theft Auto: The Trilogy - The Definitive Edition Free Download",
-      "image": "/images/gta.jpg",
+      "image": "images/gta.jpg",
       "price": 59.99
     },
     {
       "id": 2,
       "title": "Elden Ring Deluxe Edition Free Download",
-      "image": "/images/elden-ring.jpg",
+      "image": "images/elden-ring.jpg",
       "price": 49.99
     },
     {
       "id": 3,
       "title": "Marvels Spider-Man: Miles Morales Free Download",
-      "image": "/images/spider-man.jpeg",
+      "image": "images/spider-man.jpeg",
       "price": 39.99
     },
     {
       "id": 4,
       "title": "Ghost of Tsushima DIRECTORS CUT",
-      "image": "/images/ghost.jpeg",
+      "image": "images/ghost.jpeg",
       "price": 59.99
     },
     {
       "id": 5,
       "title": "Red Dead Redemption 2",
-      "image": "/images/red.png",
+      "image": "images/red.png",
       "price": 59.99
     },
     {
       "id": 6,
       "title": "Forza Horizon 5",
-      "image": "/images/forza.jpg",
+      "image": "images/forza.jpg",
       "price": 39.99
     },
     {
       "id": 7,
       "title": "UNCHARTED: Legacy of Thieves Collection",
-      "image": "/images/uncharted.jpg",
+      "image": "images/uncharted.jpg",
       "price": 69.99
     },
     {
       "id": 8,
       "title": "Days Gone",
-      "image": "/images/daysgone.jpg",
+      "image": "images/daysgone.jpg",
       "price": 49.99
     },
     {
       "id": 9,
       "title": "Hogwarts Legacy Deluxe Edition",
-      "image": "/images/hogwarts.jpg",
+      "image": "images/hogwarts.jpg",
       "price": 29.99
     },
     {
       "id": 10,
       "title": "The Last of Us Part I PC",
-      "image": "/images/lastofus.jpg",
+      "image": "images/lastofus.jpg",
       "price": 39.99
     },
     {
       "id": 11,
       "title": "Call of Duty: Modern Warfare II",
-      "image": "/images/modernwarfare2.jpg",
+      "image": "images/modernwarfare2.jpg",
       "price": 39.99
     },
     {
       "id": 12,
       "title": "Call of Duty: Modern Warfare III",
-      "image": "/images/modernwarfare3.jpg",
+      "image": "images/modernwarfare3.jpg",
       "price": 39.99
     },
     {
       "id": 13,
       "title": "Call of Duty: Black Ops 2",
-      "image": "/images/bop2.png",
+      "image": "images/bop2.png",
       "price": 29.99
     },
     {
       "id": 14,
       "title": "Dark Souls 3",
-      "image": "/images/ds3.jpg",
+      "image": "images/ds3.jpg",
       "price": 59.99
     },
     {
       "id": 15,
       "title": "The Witcher 3: Wild Hunt",
-      "image": "/images/witcher3.jpg",
+      "image": "images/witcher3.jpg",
       "price": 59.99
     }
   ]
