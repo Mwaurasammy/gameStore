@@ -44,12 +44,26 @@ header {
     border: none;
     cursor: pointer;
 }
+.search-btn:hover {
+    background-color: #9f85bb;
+    border-radius: 15px;
+}
 
 .search-btn img {
     height: 40px;
     width: 40px;
 }
+.user-btn {
+    background-color: goldenrod;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
+.user-btn img{
+    height: 30px;
+    height: 30px;
+}
 
 nav ul {
     list-style: none;

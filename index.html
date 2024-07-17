@@ -9,31 +9,23 @@
 <body>
     <header>
         <div class="logo">
-            <img src="/images/logo.png" alt="SteamRIP Logo">
+            <img src="images/logo.png" alt="GeMar logo">
             <h1>GeMar</h1>
             <input type="text" id="searchInput" placeholder="Search games...">
-            <button class="search-btn" onclick="searchGames()"><img src="/images/search.png" alt="Search"></button>
+            <button class="search-btn" onclick="searchGames()"><img src="images/search.png" alt="Search"></button>
         </div>
         <nav>
             <ul>
-                <li class="dropdown">
-                    <a href="#">Categories</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Adventure</a></li>
-                        <li><a href="#">Multiplayer</a></li>
-                        <li><a href="#">Racing</a></li>
-                        <li><a href="#">Shooters</a></li>
-                        <li><a href="#">Sports</a></li>
-                    </ul>
-                </li>
                 <li><a href="#">Games List</a></li>
                 <li><a href="#">FAQ</a></li>
+            </ul>
+            <ul class="registration">
+                <li><button class="user-btn"><img src="images/user.png"></button></li>
             </ul>
             <ul class="cart">
                 <li>
                     <button class="btn-cart" onclick="openCartModal()">
-                        <img src="/images/cart1.png" alt="Cart">
+                        <img src="images/cart1.png" alt="Cart">
                         <span id="cart-notification" class="cart-notification">0</span>
                     </button>
                 </li>
@@ -60,6 +52,6 @@
         </div>
     </div>
 
-    <script src="/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
