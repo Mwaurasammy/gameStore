@@ -1,10 +1,14 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GEMAR</title>
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/238c81f530.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
@@ -41,8 +45,8 @@
       <!-- Game articles will be dynamically added here -->
     </main>
 
-    <!-- Modal -->
-    <div id="cartModal" class="modal">
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal" style="display: none">
       <div class="modal-content">
         <span class="close" onclick="closeCartModal()">&times;</span>
         <h2>Your Games</h2>
@@ -50,13 +54,49 @@
           <!-- Cart items will be dynamically added here -->
         </ul>
         <div class="modal-footer">
-            <div class="price-info">
-          <p>Total: <span id="cart-total">$0.00</span></p>
-          <button class="btn-primary" onclick="checkout()">Checkout</button>
-          <button class="btn-secondary" onclick="clearCart()">
-            Clear Cart
-          </button>
+          <div class="price-info">
+            <p>Total: <span id="cart-total">$0.00</span></p>
+            <button class="btn-primary" onclick="checkout()">Checkout</button>
+            <button class="btn-secondary" onclick="clearCart()">
+              Clear Cart
+            </button>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Signup modal -->
+    <div class="container">
+      <div class="form-box">
+        <span class="signup-close">&times;</span>
+        <!-- Close button -->
+        <h1 id="title">Sign Up</h1>
+        <form>
+          <div class="input-group">
+            <div class="input-field" id="nameField">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" placeholder="Name" />
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-field">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="email" placeholder="Email" required />
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-field">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+          </div>
+          <div class="btn-field">
+            <button type="button" id="signupBtn">Sign up</button>
+            <button type="button" id="signinBtn" class="disable">
+              Sign in
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 

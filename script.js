@@ -1,4 +1,4 @@
-let games = []; // Define games in the global scope
+let games = []; // games in the global scope
 
 document.addEventListener("DOMContentLoaded", () => {
     const featuredSection = document.getElementById("featured");
@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Function to search and filter games
     window.searchGames = function searchGames() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const filteredGames = games.filter(game => game.title.toLowerCase().includes(searchTerm));
+        const searchWord = searchInput.value.toLowerCase();
+        const filteredGames = games.filter(game => game.title.toLowerCase().includes(searchWord));
         displayGames(filteredGames);
     }
 });
@@ -173,3 +173,38 @@ function loadCart() {
         document.getElementById("cart-notification").innerText = cartNotification;
     }
 }
+
+// Signup and signin modal functionality
+document.addEventListener("DOMContentLoaded", function () {
+    let signupBtn = document.getElementById("signupBtn");
+    let signinBtn = document.getElementById("signinBtn");
+    let nameField = document.getElementById("nameField");
+    let title = document.getElementById("title");
+
+    signinBtn.onclick = function () {
+        nameField.style.maxHeight = "0";
+        title.innerHTML = "Sign In";
+        signinBtn.classList.remove("disable");
+        signupBtn.classList.add("disable");
+    }
+
+    signupBtn.onclick = function () {
+        nameField.style.maxHeight = "65px"; // Adjust max height as per your design
+        title.innerHTML = "Sign Up";
+        signupBtn.classList.remove("disable");
+        signinBtn.classList.add("disable");
+    }
+    
+    // Show the signup/signin modal when clicking on the user button
+    document.querySelector('.user-btn').onclick = function () {
+        document.querySelector('.container').style.display = 'block';
+    }
+
+    // Close the signup/signin modal when clicking on the close button
+    document.querySelector('.signup-close').onclick = function () {
+        document.querySelector('.container').style.display = 'none';
+    }
+});
+
+
+
