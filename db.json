@@ -93,14 +93,16 @@
   ],
   "users": [
     {
-      "cart": [],
-      "id": "94d5"
-    },
-    {
       "id": "209f",
       "email": "nsammy971@gmail.com",
       "name": "zoro",
       "password": "1"
+    },
+    {
+      "id": "f1f5",
+      "email": "mwaurasammy500@gmail.com",
+      "name": "roronoa zoro",
+      "password": "5"
     }
   ]
 }

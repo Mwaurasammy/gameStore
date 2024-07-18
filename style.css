@@ -77,8 +77,8 @@ header {
 }
 
 .user-btn img {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
 }
 
 nav {
@@ -102,16 +102,45 @@ nav ul.registration {
     margin-right: 0;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
+
+#trailers-btn {
+    background-color: goldenrod;
     padding: 5px 10px;
-    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
 }
 
-nav ul li a:hover {
-    background-color: black;
+#trailers-btn img {
+    height: 30px;
+    width: 30px;
 }
+
+#trailers-btn:hover {
+    background-color: gold;
+}
+
+#faq-btn {
+    background-color: goldenrod;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+#faq-btn img{
+    height: 30px;
+    width: 30px;
+}
+
+#faq-btn:hover {
+    background-color: gold;
+}
+
 
 
 .btn-cart {
@@ -447,11 +476,11 @@ article h2 {
 
 }
 
-#logoutModal span:hover{
+#logoutModal span:hover {
     background-color: #555;
 }
 
-#confirmLogout{
+#confirmLogout {
     color: black;
     background-color: goldenrod;
     font-weight: bold;
@@ -460,12 +489,13 @@ article h2 {
     font-size: medium;
     margin-left: 100px;
 }
-#confirmLogout:hover{
+
+#confirmLogout:hover {
     background-color: red;
 }
 
 
-#cancelLogout{
+#cancelLogout {
     color: black;
     background-color: goldenrod;
     font-weight: bold;
@@ -475,6 +505,6 @@ article h2 {
     margin-left: 255px;
 }
 
-#cancelLogout:hover{
+#cancelLogout:hover {
     background-color: greenyellow;
 }
