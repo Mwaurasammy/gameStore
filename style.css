@@ -1,4 +1,4 @@
- * {
+* {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
@@ -42,7 +42,7 @@ header {
 }
 
 #searchInput:focus {
-    outline: none; 
+    outline: none;
     border-color: #583192;
 }
 
@@ -72,6 +72,10 @@ header {
     align-items: center;
 }
 
+.user-btn:hover {
+    background-color: gold;
+}
+
 .user-btn img {
     height: 30px;
     width: 30px;
@@ -93,6 +97,7 @@ nav ul li {
     margin: 0 15px;
     position: relative;
 }
+
 nav ul.registration {
     margin-right: 0;
 }
@@ -123,7 +128,7 @@ nav ul li a:hover {
 }
 
 .btn-cart:hover {
-    background-color: gray;
+    background-color: gold;
 }
 
 .btn-cart img {
@@ -194,7 +199,7 @@ article h2 {
 }
 
 .btn-add:hover {
-    background-color: gray;
+    background-color: gold;
 }
 
 .btn-add img {
@@ -300,21 +305,21 @@ article h2 {
 }
 
 .remove-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
 }
 
 .remove-btn span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 30px;
-  color: goldenrod;
-  font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: goldenrod;
+    font-weight: bold;
 }
 
 .remove-btn span:hover {
@@ -323,9 +328,6 @@ article h2 {
     border-radius: 10px;
 }
 
-
-
-/* Signup/Signin Modal */
 .form-box {
     width: 90%;
     max-width: 450px;
@@ -408,6 +410,7 @@ article h2 {
     color: #555;
     cursor: not-allowed;
 }
+
 .signup-close {
     position: absolute;
     right: 10px;
@@ -416,4 +419,62 @@ article h2 {
     font-weight: bold;
     cursor: pointer;
     color: #888;
+}
+
+#logoutModal p {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin-top: -10px;
+    padding: 10px 10px;
+    background-color: black;
+    width: 30%;
+    margin-left: 35%;
+    border-radius: 10px;
+    color: goldenrod;
+}
+
+#logoutModal span {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+}
+
+#logoutModal span:hover{
+    background-color: #555;
+}
+
+#confirmLogout{
+    color: black;
+    background-color: goldenrod;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: medium;
+    margin-left: 100px;
+}
+#confirmLogout:hover{
+    background-color: red;
+}
+
+
+#cancelLogout{
+    color: black;
+    background-color: goldenrod;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: medium;
+    margin-left: 255px;
+}
+
+#cancelLogout:hover{
+    background-color: greenyellow;
 }

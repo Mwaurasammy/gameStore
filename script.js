@@ -1,8 +1,38 @@
 let games = []; // games in the global scope
+let isAuthenticated = false; // Flag to track user authentication status
+
+// Check authentication status from sessionStorage
+function checkAuthStatus() {
+    const storedAuthStatus = sessionStorage.getItem('isAuthenticated');
+    isAuthenticated = storedAuthStatus === 'true';
+
+    if (isAuthenticated) {
+        enableCart(); // Enable cart functionality if authenticated
+    }
+}
+
+// Function to enable cart functionality by enabling buttons
+function enableCart() {
+    const addToCartButtons = document.querySelectorAll('.btn-add');
+    addToCartButtons.forEach(button => {
+        button.disabled = false;
+    });
+}
+
+// Function to disable cart functionality by disabling buttons
+function disableCart() {
+    const addToCartButtons = document.querySelectorAll('.btn-add');
+    addToCartButtons.forEach(button => {
+        button.disabled = true;
+    });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const featuredSection = document.getElementById("featured");
     const searchInput = document.getElementById("searchInput");
+
+    // Check authentication status from sessionStorage
+    checkAuthStatus();
 
     // Load cart from local storage
     loadCart();
@@ -36,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <img src="${game.image}" alt="${game.title}" />
                 <h2>${game.title}</h2>
                 <div class="card-footer">
-                    <button class="btn-add" data-id="${game.id}" onclick="addToCart('${game.title}', ${game.price}, '${game.image}')">
+                    <button class="btn-add" data-id="${game.id}" onclick="addToCart('${game.title}', ${game.price}, '${game.image}')" ${isAuthenticated ? '' : 'disabled'}>
                         <img src="images/shopping-cart.png" />
                     </button>
                     <span class="price">$${game.price.toFixed(2)}</span>
@@ -52,12 +82,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const filteredGames = games.filter(game => game.title.toLowerCase().includes(searchWord));
         displayGames(filteredGames);
     }
+
+    // Initial modal display check
+    const authModal = document.querySelector('.container');
+    if (!isAuthenticated) {
+        authModal.style.display = 'block';
+    } else {
+        authModal.style.display = 'none';
+    }
 });
 
 // Open cart modal
 function openCartModal() {
-    let modal = document.getElementById("cartModal");
-    modal.style.display = "block";
+    if (isAuthenticated) {
+        let modal = document.getElementById("cartModal");
+        modal.style.display = "block";
+    } else {
+        alert('Please sign in or sign up to view your cart.');
+    }
 }
 
 // Close cart modal
@@ -68,30 +110,34 @@ function closeCartModal() {
 
 // Add items to cart
 function addToCart(gameTitle, price, imageUrl) {
-    // Update cart notification
-    let cartNotification = document.getElementById("cart-notification");
-    cartNotification.innerText = parseInt(cartNotification.innerText) + 1;
+    if (isAuthenticated) {
+        // Update cart notification
+        let cartNotification = document.getElementById("cart-notification");
+        cartNotification.innerText = parseInt(cartNotification.innerText) + 1;
 
-    // Make list item for cart
-    let cartItems = document.getElementById("cart-items");
-    let li = document.createElement("li");
-    li.innerHTML = `
-        <img src="${imageUrl}" alt="${gameTitle}" />
-        <div class="item-details">
-            <h3>${gameTitle}</h3>
-            <p class="price">$${price.toFixed(2)}</p>
-        </div>
-        <button class="remove-btn" onclick="removeFromCart(this, ${price.toFixed(2)})">
-            <span>&times;</span>
-        </button>
-    `;
-    cartItems.appendChild(li);
+        // Make list item for cart
+        let cartItems = document.getElementById("cart-items");
+        let li = document.createElement("li");
+        li.innerHTML = `
+            <img src="${imageUrl}" alt="${gameTitle}" />
+            <div class="item-details">
+                <h3>${gameTitle}</h3>
+                <p class="price">$${price.toFixed(2)}</p>
+            </div>
+            <button class="remove-btn" onclick="removeFromCart(this, ${price.toFixed(2)})">
+                <span>&times;</span>
+            </button>
+        `;
+        cartItems.appendChild(li);
 
-    // Save cart to local storage
-    saveCart();
+        // Save cart to local storage
+        saveCart();
 
-    // Update total
-    updateTotal();
+        // Update total
+        updateTotal();
+    } else {
+        alert('Please sign in or sign up to add items to your cart.');
+    }
 }
 
 // Remove items from cart
@@ -176,10 +222,12 @@ function loadCart() {
 
 // Signup and signin modal functionality
 document.addEventListener("DOMContentLoaded", function () {
-    let signupBtn = document.getElementById("signupBtn");
-    let signinBtn = document.getElementById("signinBtn");
-    let nameField = document.getElementById("nameField");
-    let title = document.getElementById("title");
+    const signupBtn = document.getElementById("signupBtn");
+    const signinBtn = document.getElementById("signinBtn");
+    const nameField = document.getElementById("nameField");
+    const title = document.getElementById("title");
+    const authModal = document.querySelector('.container');
+    const logoutModal = document.getElementById('logoutModal');
 
     signinBtn.onclick = function () {
         nameField.style.maxHeight = "0";
@@ -194,17 +242,136 @@ document.addEventListener("DOMContentLoaded", function () {
         signupBtn.classList.remove("disable");
         signinBtn.classList.add("disable");
     }
-    
-    // Show the signup/signin modal when clicking on the user button
+
+    // User button click event
     document.querySelector('.user-btn').onclick = function () {
-        document.querySelector('.container').style.display = 'block';
+        if (isAuthenticated) {
+            logoutModal.style.display = 'block';
+        } else {
+            authModal.style.display = 'block';
+        }
     }
 
     // Close the signup/signin modal when clicking on the close button
     document.querySelector('.signup-close').onclick = function () {
-        document.querySelector('.container').style.display = 'none';
+        authModal.style.display = 'none';
+    }
+
+    // Close the logout modal when clicking on the close button
+    document.querySelector('.close-logout-modal').onclick = function () {
+        logoutModal.style.display = 'none';
+    }
+
+    // Handle logout confirmation
+    document.getElementById('confirmLogout').onclick = function () {
+        logoutModal.style.display = 'none';
+        alert('Come back again!');
+        isAuthenticated = false;
+        sessionStorage.setItem('isAuthenticated', 'false');
+        disableCart(); // Function to disable cart buttons
+        authModal.style.display = 'block';
+    }
+
+    document.getElementById('cancelLogout').onclick = function () {
+        logoutModal.style.display = 'none';
     }
 });
+
+// Handle sign-up and sign-in functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const authForm = document.getElementById('authForm');
+    const nameField = document.getElementById('nameField');
+    const title = document.getElementById('title');
+    const signupBtn = document.getElementById('signupBtn');
+    const toggleSigninBtn = document.getElementById('toggleSigninBtn');
+    const signinBtn = document.getElementById('signinBtn');
+
+    let isSignUpMode = true;
+
+    // Toggle between Sign Up and Sign In modes
+    function toggleMode() {
+        isSignUpMode = !isSignUpMode;
+        if (isSignUpMode) {
+            title.textContent = 'Sign Up';
+            nameField.style.display = 'block';
+            signupBtn.style.display = 'inline-block';
+            toggleSigninBtn.style.display = 'inline-block';
+            signinBtn.style.display = 'none';
+        } else {
+            title.textContent = 'Sign In';
+            nameField.style.display = 'none';
+            signupBtn.style.display = 'none';
+            toggleSigninBtn.style.display = 'none';
+            signinBtn.style.display = 'inline-block';
+        }
+    }
+
+    // Event listener for Sign Up button
+    signupBtn.addEventListener('click', handleSignUp);
+
+    // Event listener for toggling to Sign In mode
+    toggleSigninBtn.addEventListener('click', toggleMode);
+
+    // Event listener for Sign In button
+    signinBtn.addEventListener('click', handleSignIn);
+
+    // Handle Sign Up
+    function handleSignUp(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const name = document.getElementById('name').value;
+        const password = document.getElementById('password').value;
+
+        const user = { email, name, password };
+
+        fetch('http://localhost:3000/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Sign up successful! You can now sign in.');
+                toggleMode();
+            } else {
+                alert('Sign up failed.');
+            }
+        })
+        .catch(error => console.error('Error signing up:', error));
+    }
+
+    // Handle Sign In
+    function handleSignIn(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        fetch('http://localhost:3000/users')
+            .then(response => response.json())
+            .then(users => {
+                const user = users.find(user => user.email === email && user.password === password);
+                if (user) {
+                    alert('Sign in successful!');
+                    isAuthenticated = true; // Update authentication status
+                    sessionStorage.setItem('isAuthenticated', 'true'); // Store authentication status in sessionStorage
+                    document.querySelector('.container').style.display = 'none'; // Hide the modal
+                    enableCart(); // Enable cart functionality after sign-in
+                } else {
+                    alert('Invalid email or password.');
+                }
+            })
+            .catch(error => console.error('Error signing in:', error));
+    }
+});
+
+
+
+
+
 
 
 

@@ -69,34 +69,49 @@
     <div class="container">
       <div class="form-box">
         <span class="signup-close">&times;</span>
-        <!-- Close button -->
         <h1 id="title">Sign Up</h1>
-        <form>
-          <div class="input-group">
+        <form id="authForm">
+          <div class="input-group" id="nameGroup">
             <div class="input-field" id="nameField">
               <i class="fa-solid fa-user"></i>
-              <input type="text" placeholder="Name" />
+              <input type="text" id="name" placeholder="Name" />
             </div>
           </div>
           <div class="input-group">
             <div class="input-field">
               <i class="fa-solid fa-envelope"></i>
-              <input type="email" placeholder="Email" required />
+              <input type="email" id="email" placeholder="Email" required />
             </div>
           </div>
           <div class="input-group">
             <div class="input-field">
               <i class="fa-solid fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                required
+              />
             </div>
           </div>
           <div class="btn-field">
             <button type="button" id="signupBtn">Sign up</button>
-            <button type="button" id="signinBtn" class="disable">
+            <button type="button" id="toggleSigninBtn">Sign in</button>
+            <button type="button" id="signinBtn" style="display: none">
               Sign in
             </button>
           </div>
         </form>
+      </div>
+    </div>
+
+    <!-- logout confirmation modal-->
+    <div id="logoutModal" class="modal">
+      <div class="modal-content">
+        <span class="close-logout-modal">&times;</span>
+        <p class="logout">Log out?</p>
+        <button id="confirmLogout">Yes</button>
+        <button id="cancelLogout">No</button>
       </div>
     </div>
 
