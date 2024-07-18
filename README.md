@@ -1,4 +1,4 @@
-# GEMAR Game Store
+# GeMar Game Store
 
 Welcome to GEMAR, your ultimate destination for gaming! This project showcases a web application for browsing, purchasing, and exploring games. Users can sign up, sign in, browse game trailers, and manage their shopping cart.
 
