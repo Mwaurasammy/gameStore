@@ -1,5 +1,5 @@
 let games = []; // games in the global scope
-let isAuthenticated = false; // Flag to track user authentication status
+let isAuthenticated = false; //track user authentication status
 
 // Check authentication status from sessionStorage
 function checkAuthStatus() {
@@ -323,6 +323,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const name = document.getElementById('name').value;
         const password = document.getElementById('password').value;
 
+        if (!email || !name || !password) {
+            alert('Please enter all required fields!');
+            return;
+        }
+
         const user = { email, name, password };
 
         fetch('http://localhost:3000/users', {
@@ -340,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Sign up failed.');
             }
         })
-        .catch(error => console.error('Error signing up:', error));
+       
     }
 
     // Handle Sign In
@@ -350,12 +355,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
+         if (!email || !password) {
+            alert('Please enter all required fields!');
+            return;
+        }
+
         fetch('http://localhost:3000/users')
             .then(response => response.json())
             .then(users => {
                 const user = users.find(user => user.email === email && user.password === password);
                 if (user) {
-                    alert('Sign in successful!');
+                    alert(`Welcome! ${user.name}`);
                     isAuthenticated = true; // Update authentication status
                     sessionStorage.setItem('isAuthenticated', 'true'); // Store authentication status in sessionStorage
                     document.querySelector('.container').style.display = 'none'; // Hide the modal
@@ -364,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert('Invalid email or password.');
                 }
             })
-            .catch(error => console.error('Error signing in:', error));
+    
     }
 });
 
