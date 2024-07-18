@@ -110,5 +110,37 @@
       "name": "Andrew",
       "password": "1"
     }
+  ],
+  "videos": [
+    {
+      "id": 1,
+      "src": "videos/dead.mp4",
+      "title": "Red dead Redemption"
+    },
+    {
+      "id": 2,
+      "src": "videos/elden.mp4",
+      "title": "Elden Ring"
+    },
+    {
+      "id": 3,
+      "src": "videos/daysgone.mp4",
+      "title": "Days Gone"
+    },
+    {
+      "id": 4,
+      "src": "videos/spiderman.mp4",
+      "title": "Spiderman Miles Morales"
+    },
+    {
+      "id": 5,
+      "src": "videos/ghost.mp4",
+      "title": "Ghost of Tsushima"
+    },
+    {
+      "id": 6,
+      "src": "videos/lastofus.mp4",
+      "title": "The last of us part 1"
+    }
   ]
 }

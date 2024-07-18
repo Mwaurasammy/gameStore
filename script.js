@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Handle sign-up and sign-in functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const authForm = document.getElementById('authForm');
     const nameField = document.getElementById('nameField');
     const title = document.getElementById('title');
@@ -337,15 +337,15 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify(user)
         })
-        .then(response => {
-            if (response.ok) {
-                alert('Sign up successful! You can now sign in.');
-                toggleMode();
-            } else {
-                alert('Sign up failed.');
-            }
-        })
-       
+            .then(response => {
+                if (response.ok) {
+                    alert('Sign up successful! You can now sign in.');
+                    toggleMode();
+                } else {
+                    alert('Sign up failed.');
+                }
+            })
+
     }
 
     // Handle Sign In
@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-         if (!email || !password) {
+        if (!email || !password) {
             alert('Please enter all required fields!');
             return;
         }
@@ -374,9 +374,85 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert('Invalid email or password.');
                 }
             })
-    
+
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('trailers-trailer-modal');
+    const btn = document.getElementById('trailers-btn');
+    const span = document.querySelector('.trailer-close');
+    const videoContainer = document.querySelector('.trailer-video-container');
+
+    async function fetchVideos() {
+        try {
+            const response = await fetch('http://localhost:3000/videos'); // Adjust URL if necessary
+            if (!response.ok) {
+                throw new Error('Failed to fetch videos');
+            }
+            const data = await response.json();
+            const videos = data;
+
+            videoContainer.innerHTML = '';
+
+            videos.forEach(video => {
+                const videoWrapper = document.createElement('div');
+                videoWrapper.className = 'trailer-video-wrapper';
+
+                const videoElement = document.createElement('video');
+                videoElement.src = video.src;
+                videoElement.controls = true;
+                videoElement.className = 'trailer-modal-video';
+
+                videoElement.addEventListener('click', function () {
+                    videoElement.classList.toggle('expanded');
+                    if (videoElement.classList.contains('expanded')) {
+                        videoElement.setAttribute('controls', true);
+                    } else {
+                        videoElement.removeAttribute('controls');
+                    }
+                });
+
+                const videoTitle = document.createElement('div');
+                videoTitle.className = 'trailer-video-title';
+                videoTitle.textContent = video.title; //video.title in the JSON
+
+                videoWrapper.appendChild(videoElement);
+                videoWrapper.appendChild(videoTitle);
+                videoContainer.appendChild(videoWrapper);
+            });
+
+            modal.style.display = 'block';
+        } catch (error) {
+            console.error('Error fetching videos:', error);
+        }
+    }
+
+    btn.addEventListener('click', fetchVideos);
+
+    span.addEventListener('click', function () {
+        modal.style.display = 'none';
+        pauseVideos();
+    });
+
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            pauseVideos();
+        }
+    });
+
+    function pauseVideos() {
+        const videos = document.querySelectorAll('.trailer-modal-video');
+        videos.forEach(video => {
+            video.pause();
+        });
+    }
+});
+
+
+
 
 
 
